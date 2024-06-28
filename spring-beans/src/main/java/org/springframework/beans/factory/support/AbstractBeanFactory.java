@@ -1786,13 +1786,13 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		/**
 		 * 现有的beanInstance，这个实例可能是正常的bean，或者是FactoryBean
 		 * 1、正常bean：直接返回
-		 * 2、FactoryBean：使用beanName创建实例，但是如果用户想要直接获取工厂实例而不是工厂的getObject()方法对应的实例，那么闯入的name应该加‘&’前缀
+		 * 2、FactoryBean：使用beanName创建实例，但是如果用户想要直接获取工厂实例而不是工厂的getObject()方法对应的实例，那么c传入的name应该加‘&’前缀
 		 */
 		// Don't let calling code try to dereference the factory if the bean isn't a factory.
 		//指定的name是工厂相关（以&为前缀）
 		if (BeanFactoryUtils.isFactoryDereference(name)) {
 			if (beanInstance instanceof NullBean) {
-				return beanInstance;
+					return beanInstance;
 			}
 			//beanInstance不是FactoryBean类型则校验不通过
 			if (!(beanInstance instanceof FactoryBean)) {
